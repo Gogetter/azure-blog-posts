@@ -9,9 +9,11 @@ group 'dev.etimbuk'
 version '1.0.0-SNAPSHOT'
 
 dependencies {
-  implementation 'com.microsoft.azure.functions:azure-functions-java-library:1.4.0'
-  testCompile 'org.mockito:mockito-core:2.23.4'
-  testCompile 'org.junit.jupiter:junit-jupiter-api:5.4.2'
+
+    implementation 'com.microsoft.azure.functions:azure-functions-java-library:1.4.0'
+
+    testImplementation 'org.mockito:mockito-junit-jupiter:2.23.4'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
 }
 
 sourceCompatibility = '11'
@@ -22,16 +24,16 @@ repositories {
 }
 
 azurefunctions {
-    // subscription = '<your subscription id>'
-    resourceGroup = 'java-functions-group'
-    appName = 'java-azure-function-1626196063616' // please rename the function name
-    pricingTier = 'Consumption' // refers https://github.com/microsoft/azure-maven-plugins/tree/develop/azure-functions-maven-plugin#supported-pricing-tiers for all valid values
-    region = 'westus'
+    resourceGroup = 'eau-java-functions-rg'
+    appName = 'java-azure-function-5214' // please rename the function name
+    pricingTier = 'Consumption'
+    region = 'uksouth'
     runtime {
-      os = 'windows'
+        os = 'windows'
+        javaVersion = '11'
     }
-    // appSettings {
-    //    key = 'value'
-    // }
-    // localDebug = "transport=dt_socket,server=y,suspend=n,address=5005"
+}
+
+test {
+    useJUnitPlatform()
 }
